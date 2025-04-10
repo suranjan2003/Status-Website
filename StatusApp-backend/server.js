@@ -18,10 +18,12 @@ app.use(express.json()); // allows us to access json data in the req.body
 
 app.use('/api/services', serviceRoutes); // use the service routes
 
+
+
 if(process.env.NODE_ENV === 'production'){
-	app.use(express.static(path.join(__dirname, '/StatusApp/dist'))); // serve the static files from the client/build directory
+	app.use(express.static(path.join(__dirname, "../Status-website/StatusApp/dist"))); // serve the static files from the client/build directory
 	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, "StatusApp", "dist", "index.html"));
+		res.sendFile(path.resolve(__dirname, "../Status-website/StatusApp/dist/index.html")); // serve the index.html file for all other routes
 	});
 }
 
@@ -35,3 +37,4 @@ app.listen(PORT, () => {
 
 
 // mongodb+srv://suranjaniitkgp:it2i047VfTwL6lIg@cluster0.qjwtmwb.mongodb.net/
+

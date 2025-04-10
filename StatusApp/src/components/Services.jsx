@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import AddServiceModal from "./AddServiceModal";
 import EditServiceModal from "./EditServiceModal";
 import { useServiceStore } from "../store/service";
@@ -24,9 +23,6 @@ const Services = () => {
 		Partial_Outage: "bg-orange-100 text-orange-700",
 		Major_Outage: "bg-red-100 text-red-700",
 	};
-
-	// Replace with your backend URL
-	const API_URL = "http://localhost:5000/api/services";
 
 	useEffect(() => {
 		fetchServices();
@@ -64,7 +60,7 @@ const Services = () => {
 		setSelectedService(null);
 	};
 
-	const {addService}=useServiceStore()
+	const { addService } = useServiceStore();
 	const handleAddNewService = async (e) => {
 		e.preventDefault();
 		// try {
@@ -74,8 +70,8 @@ const Services = () => {
 		// } catch (error) {
 		// 	console.error("Error adding new service:", error);
 		// }
-		const {success,message}=await addService(newService)
-		if(success){
+		const { success, message } = await addService(newService);
+		if (success) {
 			alert(message);
 			fetchServices();
 			handleCloseAddModal();
@@ -84,31 +80,36 @@ const Services = () => {
 
 	const { editService } = useServiceStore();
 
-const handleSaveEditedService = async (e) => {
-	e.preventDefault();
-	const { success, message } = await editService(selectedService._id, selectedService);
-	if (success) {
-		alert(message);
-		fetchServices();
-		handleCloseEditModal();
-	} else {
-		alert(message || "Update failed");
-	}
-};
+	const handleSaveEditedService = async (e) => {
+		e.preventDefault();
+		const { success, message } = await editService(
+			selectedService._id,
+			selectedService
+		);
+		if (success) {
+			alert(message);
+			fetchServices();
+			handleCloseEditModal();
+		} else {
+			alert(message || "Update failed");
+		}
+	};
 
-	const {deleteService}=useServiceStore()
+	const { deleteService } = useServiceStore();
 	const handledeleteModal = async (serviceId) => {
-		const {success, message}= await deleteService(serviceId);
-		if(success){
+		const { success, message } = await deleteService(serviceId);
+		if (success) {
 			alert(message);
 			fetchServices();
 		}
-	}
+	};
 
 	return (
 		<div className="p-2 md:p-6 bg-white shadow-md rounded-md">
 			<div className="flex justify-between items-center px-2 md:px-6 py-4 border-b bg-gray-50">
-				<h2 className="text-lg md:text-2xl font-bold text-gray-700">Service Management</h2>
+				<h2 className="text-lg md:text-2xl font-bold text-gray-700">
+					Service Management
+				</h2>
 				<button
 					onClick={handleOpenAddModal}
 					className="bg-blue-600 text-white text-sm md:text-base m-2 px-1 md:px-3 py-2 rounded-md hover:bg-blue-700 shadow-md transition"
@@ -125,9 +126,13 @@ const handleSaveEditedService = async (e) => {
 						<thead>
 							<tr className="bg-gray-100 text-left">
 								<th className="px-6 py-3 text-gray-600 font-medium">Name</th>
-								<th className="px-6 py-3 text-gray-600 font-medium">Description</th>
+								<th className="px-6 py-3 text-gray-600 font-medium">
+									Description
+								</th>
 								<th className="px-6 py-3 text-gray-600 font-medium">Status</th>
-								<th className="px-6 py-3 text-gray-600 font-medium">Organization</th>
+								<th className="px-6 py-3 text-gray-600 font-medium">
+									Organization
+								</th>
 								<th className="px-6 py-3 text-gray-600 font-medium">Actions</th>
 							</tr>
 						</thead>
