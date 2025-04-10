@@ -13,8 +13,8 @@ const EditServiceModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-md shadow-lg w-96">
+    <div className="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center z-10">
+      <div className="bg-white m-2 p-6 rounded-md shadow-lg w-96 relative">
         <h3 className="text-lg font-bold mb-4">Edit Service</h3>
         <form className="space-y-4" onSubmit={handleSaveEditedService}>
           <div>

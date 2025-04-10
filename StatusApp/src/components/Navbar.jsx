@@ -40,7 +40,7 @@ const Navbar = () => {
 			<header className="bg-gray-800 p-4 shadow-lg fixed top-0 left-0 w-full z-50 h-16">
 				<div className="max-w-8xl mx-auto flex items-center justify-between">
 					<div className="flex items-center gap-2">
-						<h1 className="text-white text-xl font-bold tracking-wide">StatusApp</h1>
+						<h1 className="text-white text-xl md:text-2xl font-bold tracking-wide">StatusApp</h1>
 					</div>
 					<div className="md:hidden">
 						<button
@@ -55,25 +55,21 @@ const Navbar = () => {
 							<li key={item.path}>
 								<a
 									href={item.path}
-									className={`text-base font-medium transition-colors duration-300 ${
-										location.pathname.startsWith(item.path)
-											? "text-[#00ff00]"
-											: "text-[#4CAF50]"
-									} hover:text-[#3E8E41]`}
+									className={`text-base font-medium transition-colors duration-300 text-gray-200 hover:text-white hover:underline`}
 								>
 									{item.label}
 								</a>
 							</li>
 						))}
 						{/* Logout Button */}
-						<li>
+						{/* <li>
 							<button
 								onClick={handleLogout}
 								className="text-red-500 hover:text-red-700 font-semibold text-base"
 							>
 								Logout
 							</button>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 				{isMenuOpen && (
@@ -82,25 +78,21 @@ const Navbar = () => {
 							<li key={item.path}>
 								<a
 									href={item.path}
-									className={`text-base font-medium block transition-colors duration-300 ${
-										location.pathname.startsWith(item.path)
-											? "text-[#00ff00]"
-											: "text-[#4CAF50]"
-									} hover:text-[#3E8E41]`}
+									className={`text-base font-medium block transition-colors duration-300 text-gray-200 hover:text-white hover:underline`}
 								>
 									{item.label}
 								</a>
 							</li>
 						))}
 						{/* Logout Button for Mobile View */}
-						<li>
+						{/* <li>
 							<button
 								onClick={handleLogout}
 								className="text-red-500 hover:text-red-700 font-semibold text-base"
 							>
 								Logout
 							</button>
-						</li>
+						</li> */}
 					</ul>
 				)}
 			</header>
