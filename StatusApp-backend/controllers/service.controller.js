@@ -16,6 +16,8 @@ export const getServices = async (req, res) => {
 export const createService = async (req, res) => {
 	const service = req.body;
 
+	console.log("Incoming POST request:", service);
+
 	const newService = new Service(service);
 
 	try {

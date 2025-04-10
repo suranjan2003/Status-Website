@@ -170,7 +170,6 @@ const handleSaveEditedService = async (e) => {
 				)}
 			</div>
 
-			{/* Add Service Modal */}
 			{showAddServiceModal && (
 				<AddServiceModal
 					newService={newService}
@@ -180,7 +179,6 @@ const handleSaveEditedService = async (e) => {
 				/>
 			)}
 
-			{/* Edit Service Modal */}
 			{showEditServiceModal && (
 				<EditServiceModal
 					selectedService={selectedService}

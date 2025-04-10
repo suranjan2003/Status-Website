@@ -18,8 +18,7 @@ const serviceSchema = new mongoose.Schema({
 		required: true,
 	},
 	organization_id: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Organization",
+		type: String,
 		required: false,
 	},
 	// last_updated: {
