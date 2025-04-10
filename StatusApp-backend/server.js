@@ -21,10 +21,20 @@ app.use('/api/services', serviceRoutes); // use the service routes
 
 
 if(process.env.NODE_ENV === 'production'){
-	app.use(express.static(path.join(__dirname, "../StatusApp/dist"))); // serve the static files from the client/build directory
-	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, "../StatusApp/dist/index.html")); // serve the index.html file for all other routes
-	});
+    // Log the current directory for debugging
+    console.log('Current directory:', __dirname);
+    
+    // Use a simpler path without going up a directory
+    const staticPath = path.join(__dirname, "StatusApp/dist");
+    console.log('Static path:', staticPath);
+    
+    app.use(express.static(staticPath));
+    
+    app.get('*', (req, res) => {
+        const indexPath = path.join(staticPath, "index.html");
+        console.log('Index path:', indexPath);
+        res.sendFile(indexPath);
+    });
 }
 
 
